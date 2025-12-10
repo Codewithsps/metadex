@@ -62,6 +62,19 @@
     .hide-scrollbar::-webkit-scrollbar {
         display: none;
     }
+
+     /* Utility: hide native scrollbar for horizontal areas (if used) */
+    .hide-scrollbar { -ms-overflow-style:none; scrollbar-width:none; }
+    .hide-scrollbar::-webkit-scrollbar { display:none; }
+
+    /* Overlay gradient for better text contrast */
+    .overlay-gradient {
+      background: linear-gradient(180deg, rgba(0,0,0,0) 40%, rgba(0,0,0,0.55) 100%);
+    }
+
+    /* Small polish for card hover */
+    .card-lift { transition: transform .22s ease, box-shadow .22s ease; }
+    .card-lift:hover { transform: translateY(-6px); box-shadow: 0 18px 40px rgba(15,23,42,0.12); }
 </style>
 <script src="https://cdn.tailwindcss.com"></script>
 
@@ -426,6 +439,114 @@
     </div>
 
 
+
+  <!-- SECTION: responsive tile grid -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-5 py-5">
+    <h2 class="sr-only">Featured content</h2>
+
+    <!-- GRID:
+         - Mobile: single column stacked (large hero first)
+         - Tablet: 2 columns, hero left, others right stacked
+         - Desktop (lg+): 3 columns — hero spans 2 columns and 2 rows to left, right column contains vertical tiles -->
+    <div class="grid grid-cols-1 gap-6 lg:grid-cols-3 lg:gap-6">
+
+      <!-- LEFT: Large hero (spans 2 columns and 2 rows on lg) -->
+      <article class="relative group lg:col-span-2 lg:row-span-2 rounded-lg overflow-hidden card-lift">
+        <img
+          src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1400&q=60"
+          alt="Christmas tree decoration"
+          class="w-full h-[420px] sm:h-[520px] lg:h-full object-cover"
+          loading="lazy" />
+        <div class="absolute inset-0 overlay-gradient"></div>
+
+        <div class="absolute left-6 bottom-6 right-6 text-white">
+          <span class="inline-block bg-orange-500 text-xs px-2 py-1 rounded font-medium">New</span>
+          <h3 class="mt-3 text-2xl sm:text-3xl lg:text-4xl font-extrabold leading-tight">Get your home ready for Christmas</h3>
+          <p class="mt-2 text-sm sm:text-base max-w-xl text-gray-100/90">Discover festive styling, curated decorations and gift ideas to warm your home this season.</p>
+
+          <div class="mt-4 flex items-center gap-4">
+            <a href="#" class="inline-flex items-center gap-2 text-sm font-semibold bg-white/10 hover:bg-white/20 px-4 py-2 rounded">
+              Explore
+              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-width="2" d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <!-- RIGHT column: stacked tiles -->
+      <div class="grid grid-cols-1 gap-6">
+
+        <!-- Tile 1 -->
+        <article class="relative rounded-lg overflow-hidden card-lift h-48 sm:h-60">
+          <img src="https://cdn.pixabay.com/photo/2018/01/20/09/42/sofa-3094153_1280.jpg"
+               alt="Christmas lighting"
+               class="w-full h-full object-cover" loading="lazy" />
+          <div class="absolute inset-0 overlay-gradient"></div>
+          <div class="absolute left-4 bottom-4 text-white">
+            <h4 class="text-lg font-bold">Christmas lighting</h4>
+            <div class="mt-2">
+              <a href="#" class="inline-flex items-center text-sm font-medium text-white/90">
+                Explore
+                <svg class="w-4 h-4 ml-2" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-width="2" d="M5 12h14M13 5l7 7-7 7"/></svg>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Tile 2 -->
+        <article class="relative rounded-lg overflow-hidden card-lift h-48 sm:h-60">
+          <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=900&q=60"
+               alt="Gift ideas for Secret Santa"
+               class="w-full h-full object-cover" loading="lazy" />
+          <div class="absolute inset-0 overlay-gradient"></div>
+          <div class="absolute left-4 bottom-4 text-white">
+            <h4 class="text-lg font-bold">Gift ideas for Secret Santa</h4>
+            <div class="mt-2">
+              <a href="#" class="inline-flex items-center text-sm font-medium text-white/90">
+                Shop gifts
+                <svg class="w-4 h-4 ml-2" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-width="2" d="M5 12h14M13 5l7 7-7 7"/></svg>
+              </a>
+            </div>
+          </div>
+        </article>
+
+      </div>
+
+      <!-- BOTTOM ROW: two small tiles (on lg appear as rightmost column's second row) -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 lg:col-span-1">
+        <article class="relative rounded-lg overflow-hidden card-lift h-44 sm:h-56">
+          <img src="https://cdn.pixabay.com/photo/2020/11/24/11/36/bedroom-5772286_1280.jpg"
+               alt="Christmas decoration"
+               class="w-full h-full object-cover" loading="lazy" />
+          <div class="absolute inset-0 overlay-gradient"></div>
+          <div class="absolute left-4 bottom-4 text-white">
+            <h5 class="text-lg font-semibold">Christmas decoration</h5>
+            <a href="#" class="mt-2 inline-flex items-center text-sm text-white/90">
+              Shop
+              <svg class="w-4 h-4 ml-2" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-width="2" d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </a>
+          </div>
+        </article>
+
+        <article class="relative rounded-lg overflow-hidden card-lift h-44 sm:h-56">
+          <img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=900&q=60"
+               alt="Christmas baking"
+               class="w-full h-full object-cover" loading="lazy" />
+          <div class="absolute inset-0 overlay-gradient"></div>
+          <div class="absolute left-4 bottom-4 text-white">
+            <h5 class="text-lg font-semibold">Christmas baking</h5>
+            <a href="#" class="mt-2 inline-flex items-center text-sm text-white/90">
+              Explore
+              <svg class="w-4 h-4 ml-2" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-width="2" d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </a>
+          </div>
+        </article>
+      </div>
+
+    </div>
+  </section>
+
+
     <section class="bg-white py-10">
         <div class="max-w-7xl mx-auto px-4 sm:px-5 lg:px-5">
 
@@ -702,7 +823,14 @@
         })();
     </script>
 
-
+ <!-- Accessibility & small script: keyboard focus styles and responsive fallback -->
+  <script>
+    // Ensure links inside tiles are keyboard-focus visible
+    document.querySelectorAll('a').forEach(a => {
+      a.addEventListener('focus', () => a.classList.add('outline-none','ring-2','ring-indigo-300'));
+      a.addEventListener('blur',  () => a.classList.remove('outline-none','ring-2','ring-indigo-300'));
+    });
+  </script>
 </body>
 
 </html>
