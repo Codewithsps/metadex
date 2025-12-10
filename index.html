@@ -75,6 +75,8 @@
     /* Small polish for card hover */
     .card-lift { transition: transform .22s ease, box-shadow .22s ease; }
     .card-lift:hover { transform: translateY(-6px); box-shadow: 0 18px 40px rgba(15,23,42,0.12); }
+    .footer-bg { background: #f3f4f6; }
+    details summary::-webkit-details-marker { display: none; }
 </style>
 <script src="https://cdn.tailwindcss.com"></script>
 
@@ -609,81 +611,122 @@
     </section>
 
     <!-- ============ FOOTER ============ -->
-    <footer class="bg-gray-900 text-gray-300 pt-14 pb-10">
-        <div class="max-w-7xl mx-auto px-5 lg:px-8">
+   <footer class="footer-bg text-gray-800">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 lg:py-14">
 
-            <!-- TOP GRID -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
+    <!-- GRID FIXED: 1 Brand Column + 3 Link Columns -->
+    <div class="grid grid-cols-1 lg:grid-cols-4 gap-10">
 
-                <!-- BRAND BLOCK -->
-                <div class="lg:col-span-2">
-                    <img src="https://www.ikea.com/global/assets/logos/brand/ikea.svg"
-                        class="h-8 w-auto brightness-200" alt="Brand Logo" />
+      <!-- BRAND COLUMN (No removed extra col) -->
+      <div>
+        <img src="https://www.ikea.com/global/assets/logos/brand/ikea.svg" class="h-8 w-auto" />
+        <p class="mt-4 text-sm text-gray-600 leading-relaxed">
+          Enjoy curated furniture collections crafted for modern living.
+          Member benefits, styling tips, and exclusive offers — join our community.
+        </p>
+      </div>
 
-                    <p class="mt-5 text-gray-400 leading-relaxed max-w-sm">
-                        Premium modern furniture designed with craftsmanship, durability, and timeless aesthetics.
-                        Create a home that feels elegant and inviting.
-                    </p>
+      <!-- COLUMN: Services -->
+      <div>
+        <h4 class="text-sm font-semibold text-gray-900 mb-4">Services</h4>
 
-                    <!-- Social Icons -->
-                    <div class="mt-6 flex gap-4">
-                        <a href="#" class="hover:text-white"><i class="fa-brands fa-facebook text-xl"></i></a>
-                        <a href="#" class="hover:text-white"><i class="fa-brands fa-instagram text-xl"></i></a>
-                        <a href="#" class="hover:text-white"><i class="fa-brands fa-twitter text-xl"></i></a>
-                        <a href="#" class="hover:text-white"><i class="fa-brands fa-pinterest text-xl"></i></a>
-                    </div>
-                </div>
+        <ul class="hidden sm:block space-y-3 text-sm text-gray-700">
+          <li><a href="#" class="hover:text-indigo-600">Delivery Service</a></li>
+          <li><a href="#" class="hover:text-indigo-600">Click & collect</a></li>
+          <li><a href="#" class="hover:text-indigo-600">Assembly Service</a></li>
+          <li><a href="#" class="hover:text-indigo-600">Kitchen Planning</a></li>
+          <li><a href="#" class="hover:text-indigo-600">Customer Service</a></li>
+        </ul>
 
-                <!-- COLUMN | Shop -->
-                <div>
-                    <h3 class="text-white text-lg font-semibold mb-4">Shop</h3>
-                    <ul class="space-y-2">
-                        <li><a href="#" class="hover:text-white">Living Room</a></li>
-                        <li><a href="#" class="hover:text-white">Bedroom</a></li>
-                        <li><a href="#" class="hover:text-white">Dining</a></li>
-                        <li><a href="#" class="hover:text-white">Workspace</a></li>
-                    </ul>
-                </div>
+        <details class="sm:hidden border rounded">
+          <summary class="px-4 py-3 flex justify-between text-sm font-medium cursor-pointer">
+            Services
+            <svg class="w-4 h-4 text-gray-500" fill="none" stroke="currentColor"><path stroke-width="2" d="M6 9l6 6 6-6"/></svg>
+          </summary>
+          <ul class="px-4 pb-3 space-y-2 text-sm text-gray-700">
+            <li><a href="#">Delivery Service</a></li>
+            <li><a href="#">Click & collect</a></li>
+            <li><a href="#">Assembly Service</a></li>
+            <li><a href="#">Kitchen Planning</a></li>
+            <li><a href="#">Customer Service</a></li>
+          </ul>
+        </details>
+      </div>
 
-                <!-- COLUMN | Customer Support -->
-                <div>
-                    <h3 class="text-white text-lg font-semibold mb-4">Support</h3>
-                    <ul class="space-y-2">
-                        <li><a href="#" class="hover:text-white">Contact Us</a></li>
-                        <li><a href="#" class="hover:text-white">Shipping & Delivery</a></li>
-                        <li><a href="#" class="hover:text-white">Returns & Refunds</a></li>
-                        <li><a href="#" class="hover:text-white">Warranty</a></li>
-                    </ul>
-                </div>
+      <!-- COLUMN: Help -->
+      <div>
+        <h4 class="text-sm font-semibold text-gray-900 mb-4">Help</h4>
 
-                <!-- COLUMN | Company -->
-                <div>
-                    <h3 class="text-white text-lg font-semibold mb-4">Company</h3>
-                    <ul class="space-y-2">
-                        <li><a href="#" class="hover:text-white">About Us</a></li>
-                        <li><a href="#" class="hover:text-white">Careers</a></li>
-                        <li><a href="#" class="hover:text-white">Blogs</a></li>
-                        <li><a href="#" class="hover:text-white">Store Locator</a></li>
-                    </ul>
-                </div>
+        <ul class="hidden sm:block space-y-3 text-sm text-gray-700">
+          <li><a href="#" class="hover:text-indigo-600">How to shop</a></li>
+          <li><a href="#" class="hover:text-indigo-600">Return policy</a></li>
+          <li><a href="#" class="hover:text-indigo-600">FAQ</a></li>
+          <li><a href="#" class="hover:text-indigo-600">Contact us</a></li>
+        </ul>
 
-            </div>
+        <details class="sm:hidden border rounded">
+          <summary class="px-4 py-3 flex justify-between text-sm font-medium cursor-pointer">
+            Help
+            <svg class="w-4 h-4 text-gray-500" fill="none" stroke="currentColor"><path stroke-width="2" d="M6 9l6 6 6-6"/></svg>
+          </summary>
+          <ul class="px-4 pb-3 space-y-2 text-sm text-gray-700">
+            <li><a href="#">How to shop</a></li>
+            <li><a href="#">Return policy</a></li>
+            <li><a href="#">FAQ</a></li>
+            <li><a href="#">Contact us</a></li>
+          </ul>
+        </details>
+      </div>
 
-            <!-- DIVIDER -->
-            <div class="border-t border-gray-700 mt-12 pt-6 text-center">
-                <p class="text-gray-400 text-sm">
-                    © 2025 Furniture Co. All rights reserved.
-                </p>
-            </div>
+      <!-- COLUMN: About -->
+      <div>
+        <h4 class="text-sm font-semibold text-gray-900 mb-4">About [Brand]</h4>
 
-        </div>
-    </footer>
+        <ul class="hidden sm:block space-y-3 text-sm text-gray-700">
+          <li><a href="#" class="hover:text-indigo-600">This is [Brand]</a></li>
+          <li><a href="#" class="hover:text-indigo-600">Careers</a></li>
+          <li><a href="#" class="hover:text-indigo-600">Sustainability</a></li>
+          <li><a href="#" class="hover:text-indigo-600">Newsroom</a></li>
+        </ul>
+
+        <details class="sm:hidden border rounded">
+          <summary class="px-4 py-3 flex justify-between text-sm font-medium cursor-pointer">
+            About
+            <svg class="w-4 h-4 text-gray-500" fill="none" stroke="currentColor"><path stroke-width="2" d="M6 9l6 6 6-6"/></svg>
+          </summary>
+          <ul class="px-4 pb-3 space-y-2 text-sm text-gray-700">
+            <li><a href="#">This is [Brand]</a></li>
+            <li><a href="#">Careers</a></li>
+            <li><a href="#">Sustainability</a></li>
+            <li><a href="#">Newsroom</a></li>
+          </ul>
+        </details>
+      </div>
+
+    </div>
+
+    <!-- Divider -->
+    <div class="mt-8 border-t border-gray-200"></div>
+
+    <!-- Bottom Row -->
+    <div class="mt-6 flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4">
+      <div class="text-sm text-gray-600">© <span id="copyYear"></span> [Brand] — All rights reserved.</div>
+
+      <div class="flex gap-6 text-sm text-gray-700">
+        <a href="#" class="hover:underline">Privacy policy</a>
+        <a href="#" class="hover:underline">Cookie policy</a>
+        <a href="#" class="hover:underline">Cookie settings</a>
+      </div>
+    </div>
+
+  </div>
+</footer>
 
     <!-- FontAwesome (optional icons) -->
     <script src="https://kit.fontawesome.com/a2d9d6a04b.js" crossorigin="anonymous"></script>
 
 
-
+  
 
     <!-- Category Strip JS ======================= -->
     <script>
@@ -831,6 +874,20 @@
       a.addEventListener('blur',  () => a.classList.remove('outline-none','ring-2','ring-indigo-300'));
     });
   </script>
+
+<!-- footer js -->
+<script>
+  document.getElementById('copyYear').textContent = new Date().getFullYear();
+
+  const acc = Array.from(document.querySelectorAll("footer details"));
+  acc.forEach(el => {
+    el.addEventListener("toggle", () => {
+      if (el.open && window.innerWidth < 640) {
+        acc.forEach(other => { if (other !== el) other.open = false });
+      }
+    });
+  });
+</script>
 </body>
 
 </html>
