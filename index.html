@@ -14,579 +14,8 @@
     href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Lato:wght@300;400;700&display=swap"
     rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-  <style>
-    :root {
-      --red: #D0021B;
-      --dark: #111111;
-      --mid: #2a2a2a;
-      --gold: #C8960C;
-      --light: #F5F3EF;
-    }
+  <link rel="stylesheet" href="style.css" />
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { overflow-x: hidden; }
-    body {
-      font-family: 'Lato', sans-serif;
-      background: var(--light);
-      color: var(--dark);
-      overflow-x: hidden;
-    }
-    h1, h2, h3, h4, .brand { font-family: 'Barlow Condensed', sans-serif; }
-
-    /* ── NAVBAR ── */
-    #navbar {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 1000;
-      transition: background 0.35s, box-shadow 0.35s;
-    }
-    #navbar.scrolled {
-      background: var(--dark);
-      box-shadow: 0 2px 20px rgba(0,0,0,0.4);
-    }
-    .nav-link {
-      position: relative;
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 1rem;
-      font-weight: 600;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: #fff;
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-    .nav-link::after {
-      content: '';
-      position: absolute;
-      bottom: -3px; left: 0;
-      width: 0; height: 2px;
-      background: var(--red);
-      transition: width 0.3s;
-    }
-    .nav-link:hover::after { width: 100%; }
-    .nav-link:hover { color: #f87171; }
-
-    /* ── HAMBURGER BUTTON ── */
-    #menu-btn {
-      background: none;
-      border: 1.5px solid rgba(255,255,255,0.25);
-      cursor: pointer;
-      width: 44px; height: 44px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-      border-radius: 4px;
-      transition: border-color 0.3s, background 0.3s;
-      flex-shrink: 0;
-    }
-    /* Hide hamburger on desktop — only show on mobile */
-    @media (min-width: 768px) {
-      #menu-btn { display: none !important; }
-      #mobile-menu { display: none !important; }
-    }
-    #menu-btn:hover {
-      border-color: var(--red);
-      background: rgba(208,2,27,0.1);
-    }
-    .bar {
-      position: absolute;
-      width: 20px; height: 2px;
-      background: #fff;
-      border-radius: 2px;
-      transition: transform 0.45s cubic-bezier(0.23,1,0.32,1),
-                  opacity 0.3s ease,
-                  top 0.45s cubic-bezier(0.23,1,0.32,1),
-                  width 0.3s ease;
-    }
-    .bar-top { top: 14px; }
-    .bar-mid { top: 20px; }
-    .bar-bot { top: 26px; width: 13px; }
-
-    /* ── MOBILE OVERLAY ── */
-    #mobile-menu {
-      position: fixed;
-      inset: 0;
-      z-index: 1100;
-      pointer-events: none;
-      clip-path: circle(0% at calc(100% - 42px) 42px);
-      transition: clip-path 0.6s cubic-bezier(0.77,0,0.175,1);
-      background: #0a0a0a;
-      display: flex;
-      flex-direction: column;
-    }
-    #mobile-menu.open {
-      pointer-events: all;
-      clip-path: circle(160% at calc(100% - 42px) 42px);
-    }
-
-    /* Top bar inside overlay */
-    .mob-topbar {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 14px 20px;
-      min-height: 68px;
-      border-bottom: 1px solid rgba(255,255,255,0.08);
-      flex-shrink: 0;
-      background: #0a0a0a;
-    }
-    .mob-brand {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 1.6rem;
-      font-weight: 800;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-      color: #fff;
-      text-decoration: none;
-    }
-    .mob-brand span { color: var(--red); }
-
-    /* Close button inside overlay */
-    #close-btn {
-      background: rgba(208,2,27,0.2);
-      border: 1.5px solid var(--red);
-      color: #fff;
-      width: 44px; height: 44px;
-      display: flex; align-items: center; justify-content: center;
-      cursor: pointer;
-      border-radius: 4px;
-      font-size: 1.3rem;
-      flex-shrink: 0;
-      transition: background 0.2s, transform 0.2s;
-      -webkit-tap-highlight-color: transparent;
-    }
-    #close-btn:hover,
-    #close-btn:active { background: var(--red); transform: scale(0.93); }
-
-    /* Links area */
-    .mob-links {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      padding: 0 28px;
-      gap: 4px;
-    }
-
-    .mob-link {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: clamp(2rem, 9vw, 2.8rem);
-      font-weight: 800;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.85);
-      text-decoration: none;
-      padding: 10px 0;
-      border-bottom: 1px solid rgba(255,255,255,0.06);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      position: relative;
-      opacity: 0;
-      transform: translateX(-40px);
-      transition: opacity 0.4s ease, transform 0.45s cubic-bezier(0.23,1,0.32,1), color 0.2s;
-    }
-    .mob-link:last-of-type { border-bottom: none; }
-    .mob-link:hover { color: #fff; }
-    .mob-link:hover .mob-link-arrow { color: var(--red); transform: translateX(6px); }
-
-    .mob-link-arrow {
-      font-size: 1rem;
-      color: rgba(255,255,255,0.2);
-      transition: transform 0.25s ease, color 0.25s;
-    }
-
-    /* Staggered entrance */
-    #mobile-menu.open .mob-link { opacity: 1; transform: translateX(0); }
-    #mobile-menu.open .mob-link:nth-child(1) { transition-delay: 0.18s; }
-    #mobile-menu.open .mob-link:nth-child(2) { transition-delay: 0.24s; }
-    #mobile-menu.open .mob-link:nth-child(3) { transition-delay: 0.30s; }
-    #mobile-menu.open .mob-link:nth-child(4) { transition-delay: 0.36s; }
-    #mobile-menu.open .mob-link:nth-child(5) { transition-delay: 0.42s; }
-
-    /* Contact CTA */
-    .mob-cta-wrap {
-      padding: 20px 28px 32px;
-      flex-shrink: 0;
-    }
-
-    .mob-cta {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      width: 100%;
-      padding: 16px;
-      background: var(--red);
-      color: #fff;
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 1.1rem;
-      font-weight: 700;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      text-decoration: none;
-      border-radius: 3px;
-      transition: background 0.2s, transform 0.2s;
-    }
-    .mob-cta:hover { background: #a50016; transform: translateY(-2px); }
-
-    /* Bottom info strip */
-    .mob-footer {
-      padding: 0 28px 16px;
-      flex-shrink: 0;
-    }
-
-    /* Prevent body scroll when menu open */
-    body.menu-open { overflow: hidden; }
-
-    /* ── HERO ── */
-    #hero {
-      position: relative;
-      height: 100vh;
-      min-height: 600px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-      background: var(--dark);
-      max-width: 100vw;
-    }
-    .hero-slide {
-      position: absolute; inset: 0;
-      background-size: cover;
-      background-position: center;
-      opacity: 0;
-      transform: scale(1.1);
-      transition: opacity 1.2s ease, transform 7s ease;
-    }
-    .hero-slide.active { opacity: 1; transform: scale(1); }
-    .hero-overlay {
-      position: absolute; inset: 0;
-      background:
-        linear-gradient(to bottom, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.3) 40%, rgba(0,0,0,0.65) 100%),
-        radial-gradient(ellipse at center, transparent 30%, rgba(0,0,0,0.55) 100%);
-    }
-    .hero-overlay-bottom {
-      position: absolute; bottom: 0; left: 0; right: 0;
-      height: 180px;
-      background: linear-gradient(to top, rgba(0,0,0,0.75) 0%, transparent 100%);
-      z-index: 1;
-    }
-    .hero-content {
-      position: relative; z-index: 2;
-      text-align: center; width: 100%;
-      padding: 80px 1.5rem 120px;
-      display: flex; flex-direction: column; align-items: center;
-    }
-    .hero-badge {
-      display: inline-flex; align-items: center; gap: 10px;
-      border: 1px solid rgba(255,255,255,0.25);
-      background: rgba(255,255,255,0.06);
-      backdrop-filter: blur(8px);
-      color: rgba(255,255,255,0.85);
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 0.78rem; font-weight: 700;
-      letter-spacing: 0.2em; text-transform: uppercase;
-      padding: 7px 18px 7px 12px; margin-bottom: 1.5rem;
-      animation: fadeDown 0.8s ease both;
-    }
-    .hero-badge-dot {
-      width: 8px; height: 8px; border-radius: 50%;
-      background: var(--red); box-shadow: 0 0 8px var(--red);
-      animation: pulse 1.8s ease infinite;
-    }
-    @keyframes pulse {
-      0%,100% { transform: scale(1); opacity: 1; }
-      50% { transform: scale(1.5); opacity: 0.6; }
-    }
-    @keyframes fadeDown {
-      from { opacity: 0; transform: translateY(-16px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(24px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-    .hero-title {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: clamp(3.2rem, 9vw, 7rem);
-      font-weight: 800; line-height: 0.95; color: #fff;
-      text-transform: uppercase; letter-spacing: 0.02em;
-      animation: fadeUp 0.9s 0.25s ease both;
-    }
-    .hero-title .line-accent { color: var(--red); }
-    .hero-title .line-outline { -webkit-text-stroke: 2px rgba(255,255,255,0.5); color: transparent; }
-    .hero-divider {
-      display: flex; align-items: center; gap: 14px;
-      margin: 1.4rem auto;
-      animation: fadeIn 0.8s 0.5s ease both;
-    }
-    .hero-divider-line { flex: 1; max-width: 80px; height: 1px; background: rgba(255,255,255,0.25); }
-    .hero-divider-icon {
-      color: rgba(255,255,255,0.4); font-size: 0.85rem;
-      letter-spacing: 0.15em;
-      font-family: 'Barlow Condensed', sans-serif;
-      text-transform: uppercase;
-    }
-    .hero-sub {
-      color: rgba(255,255,255,0.7);
-      font-size: clamp(0.95rem, 1.8vw, 1.15rem);
-      font-weight: 300; max-width: 560px; line-height: 1.7;
-      animation: fadeUp 0.9s 0.45s ease both;
-    }
-    .hero-cta-group {
-      display: flex; flex-wrap: wrap; gap: 14px; justify-content: center;
-      margin-top: 2.2rem;
-      animation: fadeUp 0.9s 0.65s ease both;
-    }
-    .btn-primary {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: var(--red); color: #fff;
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 0.95rem; font-weight: 700;
-      letter-spacing: 0.14em; text-transform: uppercase;
-      padding: 15px 38px; text-decoration: none;
-      transition: background 0.22s, transform 0.22s, box-shadow 0.22s;
-      box-shadow: 0 4px 20px rgba(208,2,27,0.35);
-    }
-    .btn-primary:hover {
-      background: #a80016;
-      transform: translateY(-3px);
-      box-shadow: 0 8px 28px rgba(208,2,27,0.45);
-    }
-    .btn-outline {
-      display: inline-flex; align-items: center; gap: 8px;
-      border: 1.5px solid rgba(255,255,255,0.55); color: #fff;
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 0.95rem; font-weight: 700;
-      letter-spacing: 0.14em; text-transform: uppercase;
-      padding: 14px 38px; text-decoration: none;
-      backdrop-filter: blur(4px);
-      transition: background 0.22s, border-color 0.22s, transform 0.22s;
-    }
-    .btn-outline:hover {
-      background: rgba(255,255,255,0.12);
-      border-color: #fff; transform: translateY(-3px);
-    }
-    .hero-pills {
-      display: flex; flex-wrap: wrap; gap: 10px;
-      justify-content: center;
-      margin-top: 2.5rem;
-      animation: fadeIn 0.9s 0.85s ease both;
-    }
-    .hero-pill {
-      display: inline-flex; align-items: center; gap: 6px;
-      background: rgba(255,255,255,0.08);
-      border: 1px solid rgba(255,255,255,0.15);
-      color: rgba(255,255,255,0.7);
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 0.72rem; font-weight: 700;
-      letter-spacing: 0.14em; text-transform: uppercase;
-      padding: 5px 13px; backdrop-filter: blur(6px);
-    }
-    .hero-pill-icon { font-size: 0.85rem; }
-    .hero-counter {
-      position: absolute; bottom: 2.2rem; right: 2.5rem; z-index: 5;
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 0.85rem; font-weight: 700;
-      color: rgba(255,255,255,0.5); letter-spacing: 0.1em;
-      display: flex; align-items: center; gap: 6px;
-    }
-    .hero-counter-current { color: #fff; font-size: 1.3rem; }
-    .hero-dots {
-      position: absolute; bottom: 2.4rem; left: 50%;
-      transform: translateX(-50%);
-      display: flex; gap: 6px; z-index: 5;
-    }
-    .dot {
-      width: 24px; height: 3px;
-      background: rgba(255,255,255,0.25);
-      cursor: pointer;
-      transition: background 0.3s, width 0.3s;
-    }
-    .dot.active { background: var(--red); width: 40px; }
-    .hero-scroll {
-      position: absolute; bottom: 2.2rem; left: 2.5rem; z-index: 5;
-      display: flex; flex-direction: column; align-items: center; gap: 6px;
-      color: rgba(255,255,255,0.4);
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase;
-      animation: fadeIn 1.2s 1.2s ease both; opacity: 0;
-    }
-    .hero-scroll.visible { opacity: 1; }
-    .scroll-line {
-      width: 1px; height: 40px;
-      background: linear-gradient(to bottom, rgba(255,255,255,0.4), transparent);
-      animation: scrollPulse 2s ease infinite;
-    }
-    @keyframes scrollPulse {
-      0%,100% { transform: scaleY(1); opacity: 0.6; }
-      50% { transform: scaleY(0.4); opacity: 0.2; }
-    }
-
-    /* ── STATS STRIP ── */
-    .stats-strip { background: var(--dark); border-top: 3px solid var(--red); }
-    .stat-item { border-right: 1px solid rgba(255,255,255,0.1); }
-    .stat-item:last-child { border-right: none; }
-
-    /* ── SECTION ── */
-    .section-label {
-      display: inline-flex; align-items: center; gap: 10px;
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 0.8rem; font-weight: 700;
-      letter-spacing: 0.18em; text-transform: uppercase; color: var(--red);
-    }
-    .section-label::before {
-      content: ''; display: block;
-      width: 28px; height: 2px; background: var(--red);
-    }
-    .section-heading {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: clamp(2.2rem, 5vw, 3.5rem);
-      font-weight: 800; text-transform: uppercase;
-      line-height: 1.05; color: var(--dark);
-    }
-    .section-heading span { color: var(--red); }
-
-    /* ── TEAM CARD ── */
-    .team-card {
-      background: #fff;
-      transition: transform 0.3s, box-shadow 0.3s;
-      border-bottom: 4px solid transparent; overflow: hidden;
-    }
-    .team-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 20px 50px rgba(0,0,0,0.12);
-      border-bottom-color: var(--red);
-    }
-    .team-photo-wrap {
-      position: relative; width: 100%; height: 280px; overflow: hidden;
-    }
-    .team-photo-wrap img {
-      width: 100%; height: 100%; object-fit: cover; object-position: top;
-      transition: transform 0.4s ease;
-    }
-    .team-card:hover .team-photo-wrap img { transform: scale(1.05); }
-    .team-photo-overlay {
-      position: absolute; bottom: 0; left: 0; right: 0; height: 80px;
-      background: linear-gradient(to top, #fff 0%, transparent 100%);
-    }
-    .team-avatar {
-      width: 70px; height: 70px; border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 1.6rem; font-weight: 800; color: #fff; flex-shrink: 0;
-    }
-
-    /* ── SERVICES ── */
-    .service-card {
-      position: relative; overflow: hidden;
-      background: #161616;
-      border: 1px solid rgba(255,255,255,0.06);
-      transition: transform 0.35s, box-shadow 0.35s, border-color 0.35s;
-    }
-    .service-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 24px 60px rgba(0,0,0,0.4);
-      border-color: var(--red);
-    }
-    .service-card-img {
-      width: 100%; height: 200px; object-fit: cover;
-      object-position: center; display: block;
-      transition: transform 0.5s ease; filter: brightness(0.75);
-    }
-    .service-card:hover .service-card-img { transform: scale(1.06); filter: brightness(0.55); }
-    .service-card-img-wrap { overflow: hidden; position: relative; }
-    .service-card-img-wrap::after {
-      content: ''; position: absolute;
-      bottom: 0; left: 0; right: 0; height: 80px;
-      background: linear-gradient(to top, #161616, transparent);
-    }
-    .service-icon {
-      width: 48px; height: 48px; background: var(--red);
-      display: flex; align-items: center; justify-content: center;
-      color: #fff; font-size: 1.2rem; flex-shrink: 0;
-    }
-    .service-card-number {
-      position: absolute; top: 12px; right: 14px;
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 3.5rem; font-weight: 800;
-      color: rgba(255,255,255,0.07);
-      line-height: 1; pointer-events: none; user-select: none;
-    }
-
-    /* ── PRODUCTS ── */
-    .product-card { position: relative; overflow: hidden; background: var(--dark); cursor: pointer; }
-    .product-card img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; opacity: 0.85; }
-    .product-card:hover img { transform: scale(1.07); opacity: 0.65; }
-    .product-label {
-      position: absolute; bottom: 0; left: 0; right: 0;
-      background: linear-gradient(0deg, rgba(0,0,0,0.85) 0%, transparent 100%);
-      padding: 1.5rem 1.2rem 1rem;
-      transform: translateY(30px); opacity: 0;
-      transition: transform 0.35s, opacity 0.35s;
-    }
-    .product-card:hover .product-label { transform: translateY(0); opacity: 1; }
-    .product-tag {
-      position: absolute; top: 12px; left: 12px;
-      background: var(--red); color: #fff;
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 0.75rem; font-weight: 700;
-      letter-spacing: 0.1em; padding: 3px 10px; text-transform: uppercase;
-    }
-
-    /* ── ABOUT ── */
-    .about-img-wrap { position: relative; }
-    .about-img-wrap::after {
-      content: ''; position: absolute;
-      top: 16px; left: 16px; right: 0px; bottom: -16px;
-      border: 3px solid var(--red); z-index: -1;
-    }
-
-    /* ── CERTIFICATIONS ── */
-    .cert-badge {
-      background: #fff;
-      border: 1px solid rgba(0,0,0,0.08);
-      transition: transform 0.3s, box-shadow 0.3s;
-      display: flex; flex-direction: column;
-      align-items: center; justify-content: center;
-      gap: 0.5rem; padding: 2rem;
-    }
-    .cert-badge:hover { transform: translateY(-4px); box-shadow: 0 12px 30px rgba(0,0,0,0.1); }
-
-    /* ── CONTACT FORM ── */
-    .form-input {
-      width: 100%;
-      background: rgba(255,255,255,0.06);
-      border: 1px solid rgba(255,255,255,0.15);
-      color: #fff; padding: 14px 18px;
-      font-family: 'Lato', sans-serif; font-size: 0.95rem;
-      transition: border 0.2s; outline: none;
-    }
-    .form-input::placeholder { color: rgba(255,255,255,0.4); }
-    .form-input:focus { border-color: var(--red); }
-
-    /* ── FOOTER ── */
-    footer a { color: rgba(255,255,255,0.6); text-decoration: none; transition: color 0.2s; }
-    footer a:hover { color: var(--red); }
-
-    /* ── SCROLL ANIMATION ── */
-    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.6s ease, transform 0.6s ease; }
-    .reveal.visible { opacity: 1; transform: translateY(0); }
-    .reveal-left { opacity: 0; transform: translateX(-36px); transition: opacity 0.6s ease, transform 0.6s ease; }
-    .reveal-left.visible { opacity: 1; transform: translateX(0); }
-    .reveal-right { opacity: 0; transform: translateX(36px); transition: opacity 0.6s ease, transform 0.6s ease; }
-    .reveal-right.visible { opacity: 1; transform: translateX(0); }
-    .d1 { transition-delay: 0.1s; }
-    .d2 { transition-delay: 0.2s; }
-    .d3 { transition-delay: 0.3s; }
-    .d4 { transition-delay: 0.4s; }
-  </style>
 </head>
 
 <body>
@@ -603,7 +32,7 @@
 
     <!-- Nav links -->
     <div class="mob-links">
-       <a href="./" class="mob-link">
+      <a href="./" class="mob-link">
         Home <i class="fa-solid fa-arrow-right mob-link-arrow"></i>
       </a>
       <a href="about.html" class="mob-link">
@@ -618,7 +47,8 @@
       <a href="#team" class="mob-link">
         Team <i class="fa-solid fa-arrow-right mob-link-arrow"></i>
       </a>
-      <a href="https://drive.google.com/drive/u/3/folders/1X_nfbGq6sUVU_0yqBxJLpa0n5Tampis7" class="mob-link" target="_blank">
+      <a href="https://drive.google.com/drive/u/3/folders/1X_nfbGq6sUVU_0yqBxJLpa0n5Tampis7" class="mob-link"
+        target="_blank">
         Brochure <i class="fa-solid fa-arrow-right mob-link-arrow"></i>
       </a>
     </div>
@@ -631,8 +61,8 @@
       </a>
     </div>
 
-   
-   
+
+
   </div>
 
   <!-- ══════════════════════ NAVBAR ══════════════════════ -->
@@ -652,7 +82,8 @@
         <a href="#services" class="nav-link">Services</a>
         <a href="#products" class="nav-link">Products</a>
         <a href="#team" class="nav-link">Team</a>
-        <a href="https://drive.google.com/drive/u/3/folders/1X_nfbGq6sUVU_0yqBxJLpa0n5Tampis7" class="nav-link" target="_blank">Brochure</a>
+        <a href="https://drive.google.com/drive/u/3/folders/1X_nfbGq6sUVU_0yqBxJLpa0n5Tampis7" class="nav-link"
+          target="_blank">Brochure</a>
         <a href="#contact" class="btn-primary text-sm">Contact Us</a>
       </div>
 
@@ -681,7 +112,8 @@
         <span class="block line-outline">Solutions</span>
       </h1>
       <p class="hero-sub">
-        Blending traditional craftsmanship with modern technology — serving residential &amp; commercial spaces across India.
+        Blending traditional craftsmanship with modern technology — serving residential &amp; commercial spaces across
+        India.
       </p>
       <div class="hero-cta-group">
         <a href="#products" class="btn-primary">
@@ -738,7 +170,8 @@
         <div class="text-white/50 text-xs uppercase tracking-widest mt-1">Registered Portal</div>
       </div>
       <div class="stat-item text-center py-4 px-4">
-        <div class="text-4xl font-extrabold" style="font-family:'Barlow Condensed',sans-serif;color:var(--red);">ISO</div>
+        <div class="text-4xl font-extrabold" style="font-family:'Barlow Condensed',sans-serif;color:var(--red);">ISO
+        </div>
         <div class="text-white/50 text-xs uppercase tracking-widest mt-1">Certified Company</div>
       </div>
     </div>
@@ -751,7 +184,8 @@
         <div class="about-img-wrap">
           <img src="img/about.jpg" alt="Metadex Furniture" class="w-full h-[420px] object-cover" />
           <div class="absolute -bottom-5 -right-5 bg-white p-5 shadow-xl" style="width:160px;">
-            <div class="text-5xl font-extrabold" style="font-family:'Barlow Condensed',sans-serif;color:var(--red);line-height:1;">10+</div>
+            <div class="text-5xl font-extrabold"
+              style="font-family:'Barlow Condensed',sans-serif;color:var(--red);line-height:1;">10+</div>
             <div class="text-xs uppercase tracking-widest text-gray-500 mt-1">Years in the industry</div>
           </div>
         </div>
@@ -760,10 +194,14 @@
         <div class="section-label mb-3">About Us</div>
         <h2 class="section-heading mb-6">A Story of <span>Craft</span> &amp; Innovation</h2>
         <p class="text-gray-600 leading-relaxed mb-4">
-          Founded by <strong>Sandeep Singh</strong> and <strong>Aditya Narayan Singh</strong>, Metadex Business Hub Private Limited was established with a shared vision to bring innovation and craftsmanship to the furniture industry.
+          Founded by <strong>Sandeep Singh</strong> and <strong>Aditya Narayan Singh</strong>, Metadex Business Hub
+          Private Limited was established with a shared vision to bring innovation and craftsmanship to the furniture
+          industry.
         </p>
         <p class="text-gray-600 leading-relaxed mb-6">
-          Metadex aims to redefine the Indian furniture market by blending traditional craftsmanship with modern technology. Committed to producing stylish, durable furniture for residential and commercial spaces — delivering exceptional value with a focus on innovation and ethical practices.
+          Metadex aims to redefine the Indian furniture market by blending traditional craftsmanship with modern
+          technology. Committed to producing stylish, durable furniture for residential and commercial spaces —
+          delivering exceptional value with a focus on innovation and ethical practices.
         </p>
         <div class="grid grid-cols-2 gap-4 mb-8">
           <div class="flex items-start gap-3">
@@ -795,7 +233,8 @@
         <div class="section-label mb-3 justify-center">Services</div>
         <h2 class="section-heading text-white mb-4">What We <span>Offer</span></h2>
         <p class="text-white/50 max-w-xl mx-auto text-sm leading-relaxed">
-          Specialized contracting services across government e-tenders and private tenders — with a commitment to quality and timely delivery.
+          Specialized contracting services across government e-tenders and private tenders — with a commitment to
+          quality and timely delivery.
         </p>
       </div>
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -807,10 +246,13 @@
             <span class="service-card-number">01</span>
             <div class="flex items-center gap-4 mb-4">
               <div class="service-icon"><i class="fa-solid fa-landmark"></i></div>
-              <h3 class="text-xl font-bold uppercase" style="font-family:'Barlow Condensed',sans-serif;color:#fff;">Government Tenders</h3>
+              <h3 class="text-xl font-bold uppercase" style="font-family:'Barlow Condensed',sans-serif;color:#fff;">
+                Government Tenders</h3>
             </div>
-            <p class="text-white/50 text-sm leading-relaxed">Active participation in government e-tenders with proven track record across ministries, hospitals, and institutions.</p>
-            <div class="mt-5 pt-4 border-t border-white/10 flex items-center gap-2 text-xs text-white/30 uppercase tracking-widest">
+            <p class="text-white/50 text-sm leading-relaxed">Active participation in government e-tenders with proven
+              track record across ministries, hospitals, and institutions.</p>
+            <div
+              class="mt-5 pt-4 border-t border-white/10 flex items-center gap-2 text-xs text-white/30 uppercase tracking-widest">
               <i class="fa-solid fa-circle-check" style="color:var(--red);"></i> 20+ Projects Completed
             </div>
           </div>
@@ -823,10 +265,13 @@
             <span class="service-card-number">02</span>
             <div class="flex items-center gap-4 mb-4">
               <div class="service-icon"><i class="fa-solid fa-building"></i></div>
-              <h3 class="text-xl font-bold uppercase" style="font-family:'Barlow Condensed',sans-serif;color:#fff;">Private Sector Projects</h3>
+              <h3 class="text-xl font-bold uppercase" style="font-family:'Barlow Condensed',sans-serif;color:#fff;">
+                Private Sector Projects</h3>
             </div>
-            <p class="text-white/50 text-sm leading-relaxed">End-to-end furniture solutions for businesses, offices, hotels, and commercial spaces — tailored to your needs.</p>
-            <div class="mt-5 pt-4 border-t border-white/10 flex items-center gap-2 text-xs text-white/30 uppercase tracking-widest">
+            <p class="text-white/50 text-sm leading-relaxed">End-to-end furniture solutions for businesses, offices,
+              hotels, and commercial spaces — tailored to your needs.</p>
+            <div
+              class="mt-5 pt-4 border-t border-white/10 flex items-center gap-2 text-xs text-white/30 uppercase tracking-widest">
               <i class="fa-solid fa-circle-check" style="color:var(--red);"></i> Offices · Hotels · Retail
             </div>
           </div>
@@ -839,10 +284,13 @@
             <span class="service-card-number">03</span>
             <div class="flex items-center gap-4 mb-4">
               <div class="service-icon"><i class="fa-solid fa-cart-shopping"></i></div>
-              <h3 class="text-xl font-bold uppercase" style="font-family:'Barlow Condensed',sans-serif;color:#fff;">GeM Portal Supply</h3>
+              <h3 class="text-xl font-bold uppercase" style="font-family:'Barlow Condensed',sans-serif;color:#fff;">GeM
+                Portal Supply</h3>
             </div>
-            <p class="text-white/50 text-sm leading-relaxed">Registered on the Government e-Marketplace (GeM) Portal — providing efficient, cost-effective procurement solutions.</p>
-            <div class="mt-5 pt-4 border-t border-white/10 flex items-center gap-2 text-xs text-white/30 uppercase tracking-widest">
+            <p class="text-white/50 text-sm leading-relaxed">Registered on the Government e-Marketplace (GeM) Portal —
+              providing efficient, cost-effective procurement solutions.</p>
+            <div
+              class="mt-5 pt-4 border-t border-white/10 flex items-center gap-2 text-xs text-white/30 uppercase tracking-widest">
               <i class="fa-solid fa-circle-check" style="color:var(--red);"></i> GeM Verified Seller
             </div>
           </div>
@@ -855,10 +303,13 @@
             <span class="service-card-number">04</span>
             <div class="flex items-center gap-4 mb-4">
               <div class="service-icon"><i class="fa-solid fa-house"></i></div>
-              <h3 class="text-xl font-bold uppercase" style="font-family:'Barlow Condensed',sans-serif;color:#fff;">Residential Furniture</h3>
+              <h3 class="text-xl font-bold uppercase" style="font-family:'Barlow Condensed',sans-serif;color:#fff;">
+                Residential Furniture</h3>
             </div>
-            <p class="text-white/50 text-sm leading-relaxed">Stylish, durable furniture crafted for modern homes — from bedroom sets to living room ensembles.</p>
-            <div class="mt-5 pt-4 border-t border-white/10 flex items-center gap-2 text-xs text-white/30 uppercase tracking-widest">
+            <p class="text-white/50 text-sm leading-relaxed">Stylish, durable furniture crafted for modern homes — from
+              bedroom sets to living room ensembles.</p>
+            <div
+              class="mt-5 pt-4 border-t border-white/10 flex items-center gap-2 text-xs text-white/30 uppercase tracking-widest">
               <i class="fa-solid fa-circle-check" style="color:var(--red);"></i> Bedroom · Living · Dining
             </div>
           </div>
@@ -871,10 +322,13 @@
             <span class="service-card-number">05</span>
             <div class="flex items-center gap-4 mb-4">
               <div class="service-icon"><i class="fa-solid fa-hospital"></i></div>
-              <h3 class="text-xl font-bold uppercase" style="font-family:'Barlow Condensed',sans-serif;color:#fff;">Institutional Supply</h3>
+              <h3 class="text-xl font-bold uppercase" style="font-family:'Barlow Condensed',sans-serif;color:#fff;">
+                Institutional Supply</h3>
             </div>
-            <p class="text-white/50 text-sm leading-relaxed">Large-scale furniture supply for hospitals, colleges, and government offices with compliance and documentation.</p>
-            <div class="mt-5 pt-4 border-t border-white/10 flex items-center gap-2 text-xs text-white/30 uppercase tracking-widest">
+            <p class="text-white/50 text-sm leading-relaxed">Large-scale furniture supply for hospitals, colleges, and
+              government offices with compliance and documentation.</p>
+            <div
+              class="mt-5 pt-4 border-t border-white/10 flex items-center gap-2 text-xs text-white/30 uppercase tracking-widest">
               <i class="fa-solid fa-circle-check" style="color:var(--red);"></i> Hospitals · Colleges · Offices
             </div>
           </div>
@@ -887,10 +341,13 @@
             <span class="service-card-number">06</span>
             <div class="flex items-center gap-4 mb-4">
               <div class="service-icon"><i class="fa-solid fa-screwdriver-wrench"></i></div>
-              <h3 class="text-xl font-bold uppercase" style="font-family:'Barlow Condensed',sans-serif;color:#fff;">Custom Manufacturing</h3>
+              <h3 class="text-xl font-bold uppercase" style="font-family:'Barlow Condensed',sans-serif;color:#fff;">
+                Custom Manufacturing</h3>
             </div>
-            <p class="text-white/50 text-sm leading-relaxed">Bespoke furniture designed and manufactured to client specifications — any size, material, or finish.</p>
-            <div class="mt-5 pt-4 border-t border-white/10 flex items-center gap-2 text-xs text-white/30 uppercase tracking-widest">
+            <p class="text-white/50 text-sm leading-relaxed">Bespoke furniture designed and manufactured to client
+              specifications — any size, material, or finish.</p>
+            <div
+              class="mt-5 pt-4 border-t border-white/10 flex items-center gap-2 text-xs text-white/30 uppercase tracking-widest">
               <i class="fa-solid fa-circle-check" style="color:var(--red);"></i> Any Size · Any Material
             </div>
           </div>
@@ -907,14 +364,16 @@
           <div class="section-label mb-3">Product Range</div>
           <h2 class="section-heading">Our <span>Collection</span></h2>
         </div>
-        <p class="text-gray-500 max-w-xs text-sm leading-relaxed mt-4 md:mt-0">From executive desks to bunk beds — precision built for every space.</p>
+        <p class="text-gray-500 max-w-xs text-sm leading-relaxed mt-4 md:mt-0">From executive desks to bunk beds —
+          precision built for every space.</p>
       </div>
       <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 auto-rows-[220px] md:auto-rows-[260px]">
         <div class="product-card col-span-2 row-span-2 reveal d1">
           <div class="product-tag">Office</div>
           <img src="img/office.jpg" alt="Executive Desk" class="h-full" />
           <div class="product-label">
-            <div class="text-white font-bold uppercase" style="font-family:'Barlow Condensed',sans-serif;font-size:1.3rem;">Executive Desks</div>
+            <div class="text-white font-bold uppercase"
+              style="font-family:'Barlow Condensed',sans-serif;font-size:1.3rem;">Executive Desks</div>
             <div class="text-white/60 text-xs mt-1">Premium office workstations</div>
           </div>
         </div>
@@ -922,28 +381,32 @@
           <div class="product-tag">Bedroom</div>
           <img src="img/bedroom.jpg" alt="Bed" class="h-full" />
           <div class="product-label">
-            <div class="text-white font-bold uppercase" style="font-family:'Barlow Condensed',sans-serif;">Beds &amp; Frames</div>
+            <div class="text-white font-bold uppercase" style="font-family:'Barlow Condensed',sans-serif;">Beds &amp;
+              Frames</div>
           </div>
         </div>
         <div class="product-card reveal d3">
           <div class="product-tag">Storage</div>
           <img src="img/Wardrobes.jpg" alt="Wardrobe" class="h-full" />
           <div class="product-label">
-            <div class="text-white font-bold uppercase" style="font-family:'Barlow Condensed',sans-serif;">Wardrobes</div>
+            <div class="text-white font-bold uppercase" style="font-family:'Barlow Condensed',sans-serif;">Wardrobes
+            </div>
           </div>
         </div>
         <div class="product-card reveal d2">
           <div class="product-tag">Seating</div>
           <img src="img/Chairs-&-Sofas.jpg" alt="Chairs" class="h-full" />
           <div class="product-label">
-            <div class="text-white font-bold uppercase" style="font-family:'Barlow Condensed',sans-serif;">Chairs &amp; Sofas</div>
+            <div class="text-white font-bold uppercase" style="font-family:'Barlow Condensed',sans-serif;">Chairs &amp;
+              Sofas</div>
           </div>
         </div>
         <div class="product-card reveal d3">
           <div class="product-tag">Institutional</div>
           <img src="img/Workstations.jpg" alt="Office Workstation" class="h-full" />
           <div class="product-label">
-            <div class="text-white font-bold uppercase" style="font-family:'Barlow Condensed',sans-serif;">Workstations</div>
+            <div class="text-white font-bold uppercase" style="font-family:'Barlow Condensed',sans-serif;">Workstations
+            </div>
           </div>
         </div>
       </div>
@@ -956,7 +419,8 @@
       <div class="text-center mb-14 reveal">
         <div class="section-label mb-3 justify-center">Leadership</div>
         <h2 class="section-heading mb-3">Meet Our <span>Team</span></h2>
-        <p class="text-gray-500 max-w-lg mx-auto text-sm">A team of industry veterans committed to excellence in every project.</p>
+        <p class="text-gray-500 max-w-lg mx-auto text-sm">A team of industry veterans committed to excellence in every
+          project.</p>
       </div>
       <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
         <div class="team-card reveal d1">
@@ -969,12 +433,16 @@
             <div class="flex items-center gap-4 mb-4">
               <div class="team-avatar flex-shrink-0" style="background:var(--red)">SS</div>
               <div>
-                <h3 class="text-xl font-bold uppercase leading-tight" style="font-family:'Barlow Condensed',sans-serif;color:var(--dark);">Sandeep Singh</h3>
-                <div class="text-xs font-bold uppercase tracking-widest mt-1" style="color:var(--red);">Co-Founder &amp; Director</div>
+                <h3 class="text-xl font-bold uppercase leading-tight"
+                  style="font-family:'Barlow Condensed',sans-serif;color:var(--dark);">Sandeep Singh</h3>
+                <div class="text-xs font-bold uppercase tracking-widest mt-1" style="color:var(--red);">Co-Founder &amp;
+                  Director</div>
               </div>
             </div>
-            <p class="text-gray-500 text-sm leading-relaxed">Over 10 years of experience in the furniture industry, with expertise spanning production management, quality control, and customer relationship management.</p>
-            <div class="mt-5 pt-4 border-t border-gray-100 flex items-center gap-2 text-xs text-gray-400 uppercase tracking-widest">
+            <p class="text-gray-500 text-sm leading-relaxed">Over 10 years of experience in the furniture industry, with
+              expertise spanning production management, quality control, and customer relationship management.</p>
+            <div
+              class="mt-5 pt-4 border-t border-gray-100 flex items-center gap-2 text-xs text-gray-400 uppercase tracking-widest">
               <i class="fa-solid fa-briefcase" style="color:var(--red);"></i> 10+ Years Experience
             </div>
           </div>
@@ -989,12 +457,17 @@
             <div class="flex items-center gap-4 mb-4">
               <div class="team-avatar flex-shrink-0" style="background:var(--dark)">AN</div>
               <div>
-                <h3 class="text-xl font-bold uppercase leading-tight" style="font-family:'Barlow Condensed',sans-serif;color:var(--dark);">Aditya Narayan Singh</h3>
-                <div class="text-xs font-bold uppercase tracking-widest mt-1" style="color:var(--red);">Co-Founder &amp; Director</div>
+                <h3 class="text-xl font-bold uppercase leading-tight"
+                  style="font-family:'Barlow Condensed',sans-serif;color:var(--dark);">Aditya Narayan Singh</h3>
+                <div class="text-xs font-bold uppercase tracking-widest mt-1" style="color:var(--red);">Co-Founder &amp;
+                  Director</div>
               </div>
             </div>
-            <p class="text-gray-500 text-sm leading-relaxed">Delhi University graduate with a strong background in leadership, strategic planning, and market analysis. Driving growth with a focus on innovation and sustainability.</p>
-            <div class="mt-5 pt-4 border-t border-gray-100 flex items-center gap-2 text-xs text-gray-400 uppercase tracking-widest">
+            <p class="text-gray-500 text-sm leading-relaxed">Delhi University graduate with a strong background in
+              leadership, strategic planning, and market analysis. Driving growth with a focus on innovation and
+              sustainability.</p>
+            <div
+              class="mt-5 pt-4 border-t border-gray-100 flex items-center gap-2 text-xs text-gray-400 uppercase tracking-widest">
               <i class="fa-solid fa-chart-line" style="color:var(--red);"></i> Business Strategy
             </div>
           </div>
@@ -1009,12 +482,16 @@
             <div class="flex items-center gap-4 mb-4">
               <div class="team-avatar flex-shrink-0" style="background:#1a4a1a">DB</div>
               <div>
-                <h3 class="text-xl font-bold uppercase leading-tight" style="font-family:'Barlow Condensed',sans-serif;color:var(--dark);">Devendra Baghel</h3>
-                <div class="text-xs font-bold uppercase tracking-widest mt-1" style="color:var(--red);">Chief Operations Officer</div>
+                <h3 class="text-xl font-bold uppercase leading-tight"
+                  style="font-family:'Barlow Condensed',sans-serif;color:var(--dark);">Devendra Baghel</h3>
+                <div class="text-xs font-bold uppercase tracking-widest mt-1" style="color:var(--red);">Chief Operations
+                  Officer</div>
               </div>
             </div>
-            <p class="text-gray-500 text-sm leading-relaxed">Over 20 years of extensive experience handling government orders, GeM portal operations, and working with institutions, hospitals, and retail sectors.</p>
-            <div class="mt-5 pt-4 border-t border-gray-100 flex items-center gap-2 text-xs text-gray-400 uppercase tracking-widest">
+            <p class="text-gray-500 text-sm leading-relaxed">Over 20 years of extensive experience handling government
+              orders, GeM portal operations, and working with institutions, hospitals, and retail sectors.</p>
+            <div
+              class="mt-5 pt-4 border-t border-gray-100 flex items-center gap-2 text-xs text-gray-400 uppercase tracking-widest">
               <i class="fa-solid fa-award" style="color:var(--red);"></i> 20+ Years Experience
             </div>
           </div>
@@ -1031,17 +508,20 @@
       <div class="grid grid-cols-2 md:grid-cols-3 gap-6">
         <div class="cert-badge reveal d1">
           <div class="text-5xl mb-2">🏅</div>
-          <div class="font-bold uppercase text-lg" style="font-family:'Barlow Condensed',sans-serif;color:var(--dark);">ISO Certified</div>
+          <div class="font-bold uppercase text-lg" style="font-family:'Barlow Condensed',sans-serif;color:var(--dark);">
+            ISO Certified</div>
           <div class="text-xs text-gray-400 uppercase tracking-widest">Quality Management</div>
         </div>
         <div class="cert-badge reveal d2">
           <div class="text-5xl mb-2">🏛️</div>
-          <div class="font-bold uppercase text-lg" style="font-family:'Barlow Condensed',sans-serif;color:var(--dark);">GeM Registered</div>
+          <div class="font-bold uppercase text-lg" style="font-family:'Barlow Condensed',sans-serif;color:var(--dark);">
+            GeM Registered</div>
           <div class="text-xs text-gray-400 uppercase tracking-widest">Govt. e-Marketplace</div>
         </div>
         <div class="cert-badge col-span-2 md:col-span-1 reveal d3">
           <div class="text-5xl mb-2">📋</div>
-          <div class="font-bold uppercase text-lg" style="font-family:'Barlow Condensed',sans-serif;color:var(--dark);">GST Registered</div>
+          <div class="font-bold uppercase text-lg" style="font-family:'Barlow Condensed',sans-serif;color:var(--dark);">
+            GST Registered</div>
           <div class="font-mono text-xs mt-1" style="color:var(--red);">10AASCM7157K1Z2</div>
         </div>
       </div>
@@ -1054,28 +534,33 @@
       <div class="reveal-left">
         <div class="section-label mb-3" style="color:var(--red)">Contact</div>
         <h2 class="section-heading text-white mb-6">Let's <span>Connect</span></h2>
-        <p class="text-white/50 text-sm leading-relaxed mb-10">Have a project in mind? Whether it's a government tender, commercial fitout, or custom furniture — our team is ready to deliver.</p>
+        <p class="text-white/50 text-sm leading-relaxed mb-10">Have a project in mind? Whether it's a government tender,
+          commercial fitout, or custom furniture — our team is ready to deliver.</p>
         <div class="space-y-6">
           <div class="flex items-start gap-4">
             <div class="service-icon flex-shrink-0 w-11 h-11 text-base"><i class="fa-regular fa-envelope"></i></div>
             <div>
               <div class="text-xs text-white/30 uppercase tracking-widest mb-1">Email</div>
-              <a href="mailto:metadexpvtltd@gmail.com" class="text-white hover:text-red-400 transition-colors text-sm">metadexpvtltd@gmail.com</a>
+              <a href="mailto:metadexpvtltd@gmail.com"
+                class="text-white hover:text-red-400 transition-colors text-sm">metadexpvtltd@gmail.com</a>
             </div>
           </div>
           <div class="flex items-start gap-4">
             <div class="service-icon flex-shrink-0 w-11 h-11 text-base"><i class="fa-solid fa-phone"></i></div>
             <div>
               <div class="text-xs text-white/30 uppercase tracking-widest mb-1">Phone</div>
-              <a href="tel:+919958444148" class="text-white hover:text-red-400 transition-colors text-sm block">+91 99584 44148</a>
-              <a href="tel:+919168486777" class="text-white hover:text-red-400 transition-colors text-sm block">+91 91684 86777</a>
+              <a href="tel:+919958444148" class="text-white hover:text-red-400 transition-colors text-sm block">+91
+                99584 44148</a>
+              <a href="tel:+919168486777" class="text-white hover:text-red-400 transition-colors text-sm block">+91
+                91684 86777</a>
             </div>
           </div>
           <div class="flex items-start gap-4">
             <div class="service-icon flex-shrink-0 w-11 h-11 text-base">🌐</div>
             <div>
               <div class="text-xs text-white/30 uppercase tracking-widest mb-1">Website</div>
-              <a href="http://www.metadexhub.com" target="_blank" class="text-white hover:text-red-400 transition-colors text-sm">www.metadexhub.com</a>
+              <a href="http://www.metadexhub.com" target="_blank"
+                class="text-white hover:text-red-400 transition-colors text-sm">www.metadexhub.com</a>
             </div>
           </div>
         </div>
@@ -1114,7 +599,8 @@
           <button type="submit" class="btn-primary w-full text-center justify-center mt-2" id="submit-btn">
             Send Enquiry
           </button>
-          <div id="form-success" class="hidden text-green-400 text-sm text-center pt-2">The contact form is currently unavailable. Please contact us directly.</div>
+          <div id="form-success" class="hidden text-green-400 text-sm text-center pt-2">The contact form is currently
+            unavailable. Please contact us directly.</div>
         </form>
       </div>
     </div>
@@ -1127,7 +613,8 @@
         <div class="brand text-white text-2xl font-extrabold tracking-tight uppercase">
           META<span style="color:var(--red)">DEX</span>
         </div>
-        <p class="text-white/30 text-xs mt-2 max-w-xs leading-relaxed">Premium furniture manufacturer &amp; contractor — serving government and private sectors across India.</p>
+        <p class="text-white/30 text-xs mt-2 max-w-xs leading-relaxed">Premium furniture manufacturer &amp; contractor —
+          serving government and private sectors across India.</p>
       </div>
       <div class="flex flex-wrap gap-6 text-lg">
         <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
@@ -1137,98 +624,13 @@
       </div>
       <div class="text-white/20 text-xs">
         <p>© 2025 Metadex Business Hub Pvt. Ltd.</p>
-        <p>Designed &amp; Developed by <span style="color:rgb(154,153,153);"><a href="https://soilwrap.com/" target="_blank">Soilwrap</a></span></p>
+        <p>Designed &amp; Developed by <span style="color:rgb(154,153,153);"><a href="https://soilwrap.com/"
+              target="_blank">Soilwrap</a></span></p>
       </div>
     </div>
   </footer>
 
-  <!-- ══════════════════════ JS ══════════════════════ -->
-  <script>
-    // ── Navbar scroll ──
-    const navbar = document.getElementById('navbar');
-    window.addEventListener('scroll', () => {
-      navbar.classList.toggle('scrolled', window.scrollY > 60);
-    });
-
-    // ── Mobile menu ──
-    const menuBtn = document.getElementById('menu-btn');
-    const closeBtn = document.getElementById('close-btn');
-    const mobileMenu = document.getElementById('mobile-menu');
-
-    function openMenu() {
-      mobileMenu.classList.add('open');
-      document.body.classList.add('menu-open');
-    }
-    function closeMenu() {
-      mobileMenu.classList.remove('open');
-      document.body.classList.remove('menu-open');
-    }
-
-    menuBtn.addEventListener('click', openMenu);
-    closeBtn.addEventListener('click', closeMenu);
-
-    // Close on any link click
-    mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
-
-    // Close on backdrop tap (outside links area)
-    mobileMenu.addEventListener('click', (e) => {
-      if (e.target === mobileMenu) closeMenu();
-    });
-
-    // ── Hero slider ──
-    const slides = document.querySelectorAll('.hero-slide');
-    const dots = document.querySelectorAll('.dot');
-    const slideCounter = document.getElementById('slide-current');
-    let currentSlide = 0;
-    let slideTimer;
-
-    function goToSlide(n) {
-      slides[currentSlide].classList.remove('active');
-      dots[currentSlide].classList.remove('active');
-      currentSlide = (n + slides.length) % slides.length;
-      slides[currentSlide].classList.add('active');
-      dots[currentSlide].classList.add('active');
-      slideCounter.textContent = String(currentSlide + 1).padStart(2, '0');
-    }
-
-    dots.forEach(d => d.addEventListener('click', () => {
-      clearInterval(slideTimer);
-      goToSlide(+d.dataset.idx);
-      slideTimer = setInterval(() => goToSlide(currentSlide + 1), 5000);
-    }));
-
-    goToSlide(0);
-    slideTimer = setInterval(() => goToSlide(currentSlide + 1), 5000);
-    setTimeout(() => document.getElementById('hero-scroll').classList.add('visible'), 1200);
-
-    // ── Scroll reveal ──
-    const revealEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-    }, { threshold: 0.12 });
-    revealEls.forEach(el => observer.observe(el));
-
-    // ── Smooth scroll ──
-    document.querySelectorAll('a[href^="#"]').forEach(a => {
-      a.addEventListener('click', e => {
-        const target = document.querySelector(a.getAttribute('href'));
-        if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
-      });
-    });
-
-    // ── Contact form ──
-    function handleSubmit(e) {
-      e.preventDefault();
-      const btn = document.getElementById('submit-btn');
-      btn.textContent = 'Sending…';
-      btn.disabled = true;
-      setTimeout(() => {
-        document.getElementById('form-success').classList.remove('hidden');
-        document.getElementById('contact-form').reset();
-        btn.textContent = 'Send Enquiry';
-        btn.disabled = false;
-      }, 1200);
-    }
-  </script>
+  <script src="script.js"></script>
 </body>
+
 </html>
