@@ -1,1 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Metadex Business Hub Pvt. Ltd. – Premium Furniture Solutions</title>
+  <meta name="theme-color" content="#D0021B" />
+  <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="img/android-chrome-512x512.png ">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Lato:wght@300;400;700&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="style.css" />
+  
+</head>
+<style>
+    #navbar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  background: #0a0a0a;
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+  transition: background 0.35s, box-shadow 0.35s;
+}
+</style>
+<body>
+
+  <!-- ══════════════════════ MOBILE OVERLAY MENU ══════════════════════ -->
+  <div id="mobile-menu">
+    <!-- Top bar with brand + close button -->
+    <div class="mob-topbar">
+      <a href="#hero" class="mob-brand">META<span>DEX</span></a>
+      <button id="close-btn" aria-label="Close menu">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+
+    <!-- Nav links -->
+    <div class="mob-links">
+      <a href="./" class="mob-link">
+        Home <i class="fa-solid fa-arrow-right mob-link-arrow"></i>
+      </a>
+      <a href="about.html" class="mob-link">
+        About <i class="fa-solid fa-arrow-right mob-link-arrow"></i>
+      </a>
+      <a href="#services" class="mob-link">
+        Services <i class="fa-solid fa-arrow-right mob-link-arrow"></i>
+      </a>
+      <a href="#products" class="mob-link">
+        Products <i class="fa-solid fa-arrow-right mob-link-arrow"></i>
+      </a>
+      <a href="#team" class="mob-link">
+        Team <i class="fa-solid fa-arrow-right mob-link-arrow"></i>
+      </a>
+      <a href="https://drive.google.com/drive/u/3/folders/1X_nfbGq6sUVU_0yqBxJLpa0n5Tampis7" class="mob-link" target="_blank">
+        Brochure <i class="fa-solid fa-arrow-right mob-link-arrow"></i>
+      </a>
+    </div>
+
+    <!-- CTA button -->
+    <div class="mob-cta-wrap">
+      <a href="#contact" class="mob-cta">
+        <i class="fa-regular fa-envelope"></i>
+        Contact Us
+      </a>
+    </div>
+
+   
+  </div>
+
+  <!-- ══════════════════════ NAVBAR ══════════════════════ -->
+  <nav id="navbar" class="py-4 px-5 md:px-12">
+    <div class="max-w-7xl mx-auto flex items-center justify-between">
+      <!-- Logo -->
+      <a href="#hero" class="flex items-center gap-2">
+        <span class="brand text-white text-3xl font-extrabold tracking-tight uppercase">
+          META<span style="color:var(--red)">DEX</span>
+        </span>
+      </a>
+
+      <!-- Desktop links -->
+      <div class="hidden md:flex items-center gap-7">
+        <a href="./" class="nav-link">Home</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="#services" class="nav-link">Services</a>
+        <a href="#products" class="nav-link">Products</a>
+        <a href="#team" class="nav-link">Team</a>
+        <a href="https://drive.google.com/drive/u/3/folders/1X_nfbGq6sUVU_0yqBxJLpa0n5Tampis7" class="nav-link" target="_blank">Brochure</a>
+        <a href="#contact" class="btn-primary text-sm">Contact Us</a>
+      </div>
+
+      <!-- Hamburger (mobile only) -->
+      <button id="menu-btn" class="md:hidden" aria-label="Open menu">
+        <div class="bar bar-top"></div>
+        <div class="bar bar-mid"></div>
+        <div class="bar bar-bot"></div>
+      </button>
+    </div>
+  </nav>
+
+ 
+
+
+
+
+<section id="about">
+  <div class="about-inner">
+
+    <!-- Eyebrow -->
+    <div class="about-eyebrow sr">
+      <div class="about-eyebrow-line"></div>
+      <span class="about-eyebrow-text">About Us</span>
+    </div>
+
+    <!-- Heading -->
+    <h2 class="about-heading sr d1">
+      A Story of<br><em>Craft</em> &amp; Innovation
+    </h2>
+
+    <!-- Main grid: story left | pillars right -->
+    <div class="about-grid">
+
+      <!-- LEFT: Story -->
+      <div class="about-story sr-l d1">
+        <p>
+          Founded by <strong>Sandeep Singh</strong> and <strong>Aditya Narayan Singh</strong>,
+          Metadex Business Hub Private Limited was established with a shared vision — to bring
+          innovation and craftsmanship to the furniture industry.
+        </p>
+        <p>
+          Sandeep's decade of hands-on experience with India's top furniture companies, combined
+          with Aditya's background in business strategy and operations, laid the foundation for
+          a company built on quality, sustainability, and customer-first thinking.
+        </p>
+        <p>
+          Metadex redefines the Indian furniture market by blending
+          <strong>traditional craftsmanship with modern technology</strong> — producing stylish,
+          durable furniture for residential, commercial, and institutional spaces.
+        </p>
+
+        <div class="about-tags">
+          <span class="about-tag">ISO Certified</span>
+          <span class="about-tag">GEM Registered</span>
+          <span class="about-tag">Govt. Tenders</span>
+          <span class="about-tag">Private Tenders</span>
+          <span class="about-tag">Custom Mfg.</span>
+        </div>
+      </div>
+
+      <!-- vertical rule -->
+      <div class="about-divider-v"></div>
+
+      <!-- RIGHT: Value pillars -->
+      <div class="about-pillars sr-r d2">
+
+        <div class="pillar">
+          <span class="pillar-num">01</span>
+          <div class="pillar-body">
+            <h4>Quality First</h4>
+            <p>Every product undergoes rigorous checks — from raw material to final delivery, quality is non-negotiable at every step.</p>
+          </div>
+        </div>
+
+        <div class="pillar">
+          <span class="pillar-num">02</span>
+          <div class="pillar-body">
+            <h4>Innovation</h4>
+            <p>Continuous investment in modern technology keeps our range fresh, functional, and ahead of industry trends.</p>
+          </div>
+        </div>
+
+        <div class="pillar">
+          <span class="pillar-num">03</span>
+          <div class="pillar-body">
+            <h4>Integrity</h4>
+            <p>Complete transparency in every tender, contract, and client relationship — ethical conduct is our default.</p>
+          </div>
+        </div>
+
+        <div class="pillar">
+          <span class="pillar-num">04</span>
+          <div class="pillar-body">
+            <h4>Timely Delivery</h4>
+            <p>Streamlined operations and experienced project management ensure on-time delivery, always.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Stats row -->
+    <div class="about-stats">
+      <div class="astat sr d1">
+        <div class="astat-accent"></div>
+        <div class="astat-num">10<span>+</span></div>
+        <div class="astat-label">Years Experience</div>
+      </div>
+      <div class="astat sr d2">
+        <div class="astat-accent"></div>
+        <div class="astat-num">20<span>+</span></div>
+        <div class="astat-label">Govt. Projects</div>
+      </div>
+      <div class="astat sr d3">
+        <div class="astat-accent"></div>
+        <div class="astat-num"><span>GEM</span></div>
+        <div class="astat-label">Registered Portal</div>
+      </div>
+      <div class="astat sr d4">
+        <div class="astat-accent"></div>
+        <div class="astat-num"><span>ISO</span></div>
+        <div class="astat-label">Certified Company</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+
+  <!-- ══════════════════════ FOOTER ══════════════════════ -->
+  <footer style="background:#0a0a0a;border-top:3px solid var(--red)" class="py-10 px-6 md:px-12">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-center gap-8">
+      <div>
+        <div class="brand text-white text-2xl font-extrabold tracking-tight uppercase">
+          META<span style="color:var(--red)">DEX</span>
+        </div>
+        <p class="text-white/30 text-xs mt-2 max-w-xs leading-relaxed">Premium furniture manufacturer &amp; contractor — serving government and private sectors across India.</p>
+      </div>
+      <div class="flex flex-wrap gap-6 text-lg">
+        <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://x.com" target="_blank"><i class="fab fa-x-twitter"></i></a>
+      </div>
+      <div class="text-white/20 text-xs">
+        <p>© 2025 Metadex Business Hub Pvt. Ltd.</p>
+        <p>Designed &amp; Developed by <span style="color:rgb(154,153,153);"><a href="https://soilwrap.com/" target="_blank">Soilwrap</a></span></p>
+      </div>
+    </div>
+  </footer>
+
+ <script defer src="script.js"></script> 
+ <script>
+  const els = document.querySelectorAll('.sr, .sr-l, .sr-r');
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('on'); io.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  els.forEach(el => io.observe(el));
+</script>
+</body>
+</html>
