@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Metadex Business Hub Pvt. Ltd. – Premium Furniture Solutions</title>
+  <meta name="theme-color" content="#D0021B" />
+  <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="img/android-chrome-512x512.png ">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Lato:wght@300;400;700&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="style.css" />
+  
+</head>
+<style>
+    #navbar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  background: #0a0a0a;
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+  transition: background 0.35s, box-shadow 0.35s;
+}
+</style>
+<body>
+
+  <!-- ══════════════════════ MOBILE OVERLAY MENU ══════════════════════ -->
+  <div id="mobile-menu">
+    <!-- Top bar with brand + close button -->
+    <div class="mob-topbar">
+      <a href="#hero" class="mob-brand">META<span>DEX</span></a>
+      <button id="close-btn" aria-label="Close menu">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+
+    <!-- Nav links -->
+    <div class="mob-links">
+      <a href="./" class="mob-link">
+        Home <i class="fa-solid fa-arrow-right mob-link-arrow"></i>
+      </a>
+      <a href="about.html" class="mob-link">
+        About <i class="fa-solid fa-arrow-right mob-link-arrow"></i>
+      </a>
+      <a href="#services" class="mob-link">
+        Services <i class="fa-solid fa-arrow-right mob-link-arrow"></i>
+      </a>
+      <a href="#products" class="mob-link">
+        Products <i class="fa-solid fa-arrow-right mob-link-arrow"></i>
+      </a>
+      <!-- <a href="#team" class="mob-link">
+        Team <i class="fa-solid fa-arrow-right mob-link-arrow"></i>
+      </a> -->
+      <a href="https://drive.google.com/file/d/1qSpAtraH5QrpUP4npOCg5G9hy-ifZ0D3/view?usp=sharing" class="mob-link" target="_blank">
+        Brochure <i class="fa-solid fa-arrow-right mob-link-arrow"></i>
+      </a>
+    </div>
+
+    <!-- CTA button -->
+    <div class="mob-cta-wrap">
+      <a href="#contact" class="mob-cta">
+        <i class="fa-regular fa-envelope"></i>
+        Contact Us
+      </a>
+    </div>
+
+   
+  </div>
+
+  <!-- ══════════════════════ NAVBAR ══════════════════════ -->
+  <nav id="navbar" class="py-4 px-5 md:px-12">
+    <div class="max-w-7xl mx-auto flex items-center justify-between">
+      <!-- Logo -->
+      <a href="#hero" class="flex items-center gap-2">
+        <span class="brand text-white text-3xl font-extrabold tracking-tight uppercase">
+          META<span style="color:var(--red)">DEX</span>
+        </span>
+      </a>
+
+      <!-- Desktop links -->
+      <div class="hidden md:flex items-center gap-7">
+        <a href="./" class="nav-link">Home</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="#services" class="nav-link">Services</a>
+        <a href="#products" class="nav-link">Products</a>
+        <!-- <a href="#team" class="nav-link">Team</a> -->
+        <a href="https://drive.google.com/file/d/1qSpAtraH5QrpUP4npOCg5G9hy-ifZ0D3/view?usp=sharing" class="nav-link" target="_blank">Brochure</a>
+        <a href="#contact" class="btn-primary text-sm">Contact Us</a>
+      </div>
+
+      <!-- Hamburger (mobile only) -->
+      <button id="menu-btn" class="md:hidden" aria-label="Open menu">
+        <div class="bar bar-top"></div>
+        <div class="bar bar-mid"></div>
+        <div class="bar bar-bot"></div>
+      </button>
+    </div>
+  </nav>
+
+
+<!-- Simple 404 Page -->
+<section class="min-h-screen flex items-center justify-center bg-white px-6">
+  <div class="text-center max-w-lg">
+
+    <h1 class="text-8xl md:text-9xl font-bold text-black">
+      404
+    </h1>
+
+    <h2 class="mt-4 text-2xl md:text-3xl font-semibold text-gray-900">
+      Page Not Found
+    </h2>
+
+    <p class="mt-4 text-gray-500">
+      Sorry, the page you are looking for doesn't exist or has been moved.
+    </p>
+
+    <!--  -->
+
+  </div>
+</section>
+
+
+
+  <!-- ══════════════════════ FOOTER ══════════════════════ -->
+  <footer style="background:#0a0a0a;border-top:3px solid var(--red)" class="py-10 px-6 md:px-12">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-center gap-8">
+      <div>
+        <div class="brand text-white text-2xl font-extrabold tracking-tight uppercase">
+          META<span style="color:var(--red)">DEX</span>
+        </div>
+        <p class="text-white/30 text-xs mt-2 max-w-xs leading-relaxed">Premium furniture manufacturer &amp; contractor — serving government and private sectors across India.</p>
+      </div>
+      <div class="flex flex-wrap gap-6 text-lg">
+        <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://x.com" target="_blank"><i class="fab fa-x-twitter"></i></a>
+      </div>
+      <div class="text-white/20 text-xs">
+        <p>© 2025 Metadex Business Hub Pvt. Ltd.</p>
+        <p>Designed &amp; Developed by <span style="color:rgb(154,153,153);"><a href="https://soilwrap.com/" target="_blank">Soilwrap</a></span></p>
+      </div>
+    </div>
+  </footer>
+
+ <script defer src="script.js"></script> 
+ <script>
+  const els = document.querySelectorAll('.sr, .sr-l, .sr-r');
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('on'); io.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  els.forEach(el => io.observe(el));
+</script>
+</body>
+</html>
