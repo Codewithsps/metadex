@@ -526,219 +526,387 @@
     </div>
   </section>
 
-  ```html
-<!-- ══════════════════════ CONTACT ══════════════════════ -->
-<section id="contact" style="background:var(--dark)" class="py-24 px-6 md:px-12">
+
+<!-- ══════════════════════════════════════════════════════
+     CONTACT SECTION
+══════════════════════════════════════════════════════ -->
+
+<section
+  id="contact"
+  style="background:var(--dark)"
+  class="py-24 px-6 md:px-12"
+>
+
   <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-start">
 
-    <!-- LEFT SIDE -->
+
+    <!-- ══════════════════════════════════════════════════
+         LEFT SIDE - CONTACT INFORMATION
+    ══════════════════════════════════════════════════ -->
+
     <div class="reveal-left">
 
-      <div class="section-label mb-3" style="color:var(--red)">
+      <div
+        class="section-label mb-3"
+        style="color:var(--red)"
+      >
         Contact
       </div>
+
 
       <h2 class="section-heading text-white mb-6">
         Let's <span>Connect</span>
       </h2>
 
+
       <p class="text-white/50 text-sm leading-relaxed mb-10">
         Have a project in mind? Whether it's a government tender,
-        commercial fitout, or custom furniture — our team is ready to deliver.
+        commercial fitout, or custom furniture — our team is ready
+        to deliver.
       </p>
+
 
       <div class="space-y-6">
 
+
         <!-- EMAIL -->
         <div class="flex items-start gap-4">
-          <div class="service-icon flex-shrink-0 w-11 h-11 text-base">
+
+          <div
+            class="service-icon flex-shrink-0 w-11 h-11 text-base"
+          >
             <i class="fa-regular fa-envelope"></i>
           </div>
 
+
           <div>
-            <div class="text-xs text-white/30 uppercase tracking-widest mb-1">
+
+            <div
+              class="text-xs text-white/30 uppercase tracking-widest mb-1"
+            >
               Email
             </div>
 
-            <a href="mailto:metadexpvtltd@gmail.com"
-              class="text-white hover:text-red-400 transition-colors text-sm">
+
+            <a
+              href="mailto:metadexpvtltd@gmail.com"
+              class="text-white hover:text-red-400 transition-colors text-sm"
+            >
               metadexpvtltd@gmail.com
             </a>
+
           </div>
+
         </div>
+
 
 
         <!-- PHONE -->
         <div class="flex items-start gap-4">
-          <div class="service-icon flex-shrink-0 w-11 h-11 text-base">
+
+          <div
+            class="service-icon flex-shrink-0 w-11 h-11 text-base"
+          >
             <i class="fa-solid fa-phone"></i>
           </div>
 
+
           <div>
-            <div class="text-xs text-white/30 uppercase tracking-widest mb-1">
+
+            <div
+              class="text-xs text-white/30 uppercase tracking-widest mb-1"
+            >
               Phone
             </div>
 
-            <a href="tel:+919958444148"
-              class="text-white hover:text-red-400 transition-colors text-sm block">
+
+            <a
+              href="tel:+919958444148"
+              class="text-white hover:text-red-400 transition-colors text-sm block"
+            >
               +91 99584 44148
             </a>
 
-            <a href="tel:+919168486777"
-              class="text-white hover:text-red-400 transition-colors text-sm block">
+
+            <a
+              href="tel:+919168486777"
+              class="text-white hover:text-red-400 transition-colors text-sm block"
+            >
               +91 91684 86777
             </a>
+
           </div>
+
         </div>
+
+
+
+        <!-- WHATSAPP -->
+        <div class="flex items-start gap-4">
+
+          <div
+            class="service-icon flex-shrink-0 w-11 h-11 text-base"
+          >
+            <i class="fa-brands fa-whatsapp"></i>
+          </div>
+
+
+          <div>
+
+            <div
+              class="text-xs text-white/30 uppercase tracking-widest mb-1"
+            >
+              WhatsApp
+            </div>
+
+
+            <a
+              href="https://wa.me/919958444148"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-white hover:text-green-400 transition-colors text-sm"
+            >
+              +91 99584 44148
+            </a>
+
+          </div>
+
+        </div>
+
 
 
         <!-- WEBSITE -->
         <div class="flex items-start gap-4">
-          <div class="service-icon flex-shrink-0 w-11 h-11 text-base">
+
+          <div
+            class="service-icon flex-shrink-0 w-11 h-11 text-base"
+          >
             🌐
           </div>
 
+
           <div>
-            <div class="text-xs text-white/30 uppercase tracking-widest mb-1">
+
+            <div
+              class="text-xs text-white/30 uppercase tracking-widest mb-1"
+            >
               Website
             </div>
 
-            <a href="http://www.metadexhub.com"
+
+            <a
+              href="http://www.metadexhub.com"
               target="_blank"
               rel="noopener noreferrer"
-              class="text-white hover:text-red-400 transition-colors text-sm">
+              class="text-white hover:text-red-400 transition-colors text-sm"
+            >
               www.metadexhub.com
             </a>
+
           </div>
+
         </div>
 
+
       </div>
+
     </div>
 
 
-    <!-- RIGHT SIDE - CONTACT FORM -->
+
+    <!-- ══════════════════════════════════════════════════
+         RIGHT SIDE - CONTACT FORM
+    ══════════════════════════════════════════════════ -->
+
     <div class="reveal-right">
 
-      <form id="contact-form"
-        onsubmit="handleSubmit(event)"
-        class="space-y-4">
+
+      <form
+        id="contact-form"
+        class="space-y-4"
+      >
+
 
         <!-- NAME + PHONE -->
         <div class="grid sm:grid-cols-2 gap-4">
 
+
+          <!-- NAME -->
           <div>
-            <label class="text-white/40 text-xs uppercase tracking-widest block mb-2">
+
+            <label
+              for="contact-name"
+              class="text-white/40 text-xs uppercase tracking-widest block mb-2"
+            >
               Name
             </label>
 
+
             <input
               type="text"
-              id="name"
+              id="contact-name"
+              name="name"
               placeholder="Your Name"
               class="form-input"
+              autocomplete="name"
               required
             />
+
           </div>
 
 
+
+          <!-- PHONE -->
           <div>
-            <label class="text-white/40 text-xs uppercase tracking-widest block mb-2">
+
+            <label
+              for="contact-phone"
+              class="text-white/40 text-xs uppercase tracking-widest block mb-2"
+            >
               Phone
             </label>
 
+
             <input
               type="tel"
-              id="phone"
+              id="contact-phone"
+              name="phone"
               placeholder="+91 98765 43210"
               class="form-input"
+              autocomplete="tel"
             />
+
           </div>
 
+
         </div>
+
 
 
         <!-- EMAIL -->
         <div>
-          <label class="text-white/40 text-xs uppercase tracking-widest block mb-2">
+
+          <label
+            for="contact-email"
+            class="text-white/40 text-xs uppercase tracking-widest block mb-2"
+          >
             Email
           </label>
 
+
           <input
             type="email"
-            id="email"
+            id="contact-email"
+            name="email"
             placeholder="you@company.com"
             class="form-input"
+            autocomplete="email"
             required
           />
+
         </div>
+
 
 
         <!-- ENQUIRY TYPE -->
         <div>
-          <label class="text-white/40 text-xs uppercase tracking-widest block mb-2">
+
+          <label
+            for="contact-enquiry"
+            class="text-white/40 text-xs uppercase tracking-widest block mb-2"
+          >
             Enquiry Type
           </label>
 
+
           <select
-            id="enquiry"
+            id="contact-enquiry"
+            name="enquiry"
             class="form-input"
             style="background:#1a1a1a; color:#fff;"
           >
 
-            <option value=""
-              style="background:#1a1a1a; color:#fff;">
+            <option
+              value=""
+              style="background:#1a1a1a; color:#fff;"
+            >
               Select a category
             </option>
 
-            <option value="Government / GeM Tender"
-              style="background:#1a1a1a; color:#fff;">
+
+            <option
+              value="Government / GeM Tender"
+              style="background:#1a1a1a; color:#fff;"
+            >
               Government / GeM Tender
             </option>
 
-            <option value="Private Commercial Project"
-              style="background:#1a1a1a; color:#fff;">
+
+            <option
+              value="Private Commercial Project"
+              style="background:#1a1a1a; color:#fff;"
+            >
               Private Commercial Project
             </option>
 
-            <option value="Residential Furniture"
-              style="background:#1a1a1a; color:#fff;">
+
+            <option
+              value="Residential Furniture"
+              style="background:#1a1a1a; color:#fff;"
+            >
               Residential Furniture
             </option>
 
-            <option value="Institutional Supply"
-              style="background:#1a1a1a; color:#fff;">
+
+            <option
+              value="Institutional Supply"
+              style="background:#1a1a1a; color:#fff;"
+            >
               Institutional Supply
             </option>
 
-            <option value="Custom Manufacturing"
-              style="background:#1a1a1a; color:#fff;">
+
+            <option
+              value="Custom Manufacturing"
+              style="background:#1a1a1a; color:#fff;"
+            >
               Custom Manufacturing
             </option>
 
           </select>
+
         </div>
+
 
 
         <!-- MESSAGE -->
         <div>
-          <label class="text-white/40 text-xs uppercase tracking-widest block mb-2">
+
+          <label
+            for="contact-message"
+            class="text-white/40 text-xs uppercase tracking-widest block mb-2"
+          >
             Message
           </label>
 
+
           <textarea
-            id="message"
+            id="contact-message"
+            name="message"
             rows="4"
             placeholder="Describe your requirement..."
             class="form-input resize-none"
           ></textarea>
+
         </div>
 
 
-        <!-- WHATSAPP BUTTON -->
+
+        <!-- SUBMIT BUTTON -->
         <button
           type="submit"
+          id="whatsapp-submit"
           class="btn-primary w-full text-center justify-center mt-2"
-          id="submit-btn"
         >
 
           <i class="fa-brands fa-whatsapp mr-2"></i>
@@ -748,59 +916,128 @@
         </button>
 
 
-        <!-- SUCCESS MESSAGE -->
+
+        <!-- STATUS MESSAGE -->
         <div
-          id="form-success"
-          class="hidden text-green-400 text-sm text-center pt-2"
-        >
-          WhatsApp is opening...
-        </div>
+          id="whatsapp-status"
+          class="hidden text-sm text-center pt-2"
+        ></div>
+
 
       </form>
+
 
     </div>
 
   </div>
+
 </section>
 
 
-<!-- ══════════════════════ WHATSAPP FORM SCRIPT ══════════════════════ -->
+
+<!-- ══════════════════════════════════════════════════════
+     WHATSAPP FORM JAVASCRIPT
+══════════════════════════════════════════════════════ -->
+
 <script>
 
-function handleSubmit(event) {
-
-  // Stop normal form submission
-  event.preventDefault();
+document.addEventListener("DOMContentLoaded", function () {
 
 
-  // Get form elements
-  const form = document.getElementById("contact-form");
-
-  const name = document.getElementById("name").value.trim();
-
-  const phone = document.getElementById("phone").value.trim();
-
-  const email = document.getElementById("email").value.trim();
-
-  const enquiry = document.getElementById("enquiry").value;
-
-  const message = document.getElementById("message").value.trim();
-
-  const submitBtn = document.getElementById("submit-btn");
-
-  const successMessage = document.getElementById("form-success");
+  const contactForm =
+    document.getElementById("contact-form");
 
 
-  // WhatsApp destination number
-  // Country code 91 + number
+  const submitButton =
+    document.getElementById("whatsapp-submit");
+
+
+  const statusMessage =
+    document.getElementById("whatsapp-status");
+
+
+  /*
+   * YOUR WHATSAPP NUMBER
+   *
+   * India country code = 91
+   *
+   * +91 99584 44148
+   *
+   * WhatsApp format:
+   * 919958444148
+   */
+
   const whatsappNumber = "919958444148";
 
 
-  // Create WhatsApp message
-  const whatsappMessage = `
-*NEW WEBSITE ENQUIRY*
+  /*
+   * FORM SUBMIT
+   */
 
-━━━━━━━━━━━━━━━━━━
+  contactForm.addEventListener("submit", function (event) {
+
+    event.preventDefault();
+
+
+    /* Get form values */
+
+    const name =
+      document.getElementById("contact-name").value.trim();
+
+
+    const phone =
+      document.getElementById("contact-phone").value.trim();
+
+
+    const email =
+      document.getElementById("contact-email").value.trim();
+
+
+    const enquiry =
+      document.getElementById("contact-enquiry").value.trim();
+
+
+    const message =
+      document.getElementById("contact-message").value.trim();
+
+
+
+    /*
+     * Validate required fields
+     */
+
+    if (!name) {
+
+      alert("Please enter your name.");
+
+      document.getElementById("contact-name").focus();
+
+      return;
+
+    }
+
+
+    if (!email) {
+
+      alert("Please enter your email.");
+
+      document.getElementById("contact-email").focus();
+
+      return;
+
+    }
+
+
+
+    /*
+     * Create WhatsApp message
+     */
+
+    const whatsappMessage =
+
+`*NEW WEBSITE ENQUIRY*
+
+━━━━━━━━━━━━━━━━━━━━
 
 *Name:*
 ${name}
@@ -817,55 +1054,83 @@ ${enquiry || "Not selected"}
 *Message:*
 ${message || "No message provided"}
 
-━━━━━━━━━━━━━━━━━━
+━━━━━━━━━━━━━━━━━━━━
 
-*Website:* www.metadexhub.com
-`;
-
-
-  // Encode message for WhatsApp URL
-  const encodedMessage =
-    encodeURIComponent(whatsappMessage);
+*Website:*
+www.metadexhub.com`;
 
 
-  // WhatsApp URL
-  const whatsappURL =
-    `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+
+    /*
+     * Encode message
+     */
+
+    const encodedMessage =
+      encodeURIComponent(whatsappMessage);
 
 
-  // Change button text
-  submitBtn.innerHTML =
-    '<i class="fa-brands fa-whatsapp mr-2"></i> Opening WhatsApp...';
+
+    /*
+     * Create WhatsApp URL
+     */
+
+    const whatsappURL =
+      "https://wa.me/" +
+      whatsappNumber +
+      "?text=" +
+      encodedMessage;
 
 
-  submitBtn.disabled = true;
+
+    /*
+     * Update button
+     */
+
+    submitButton.disabled = true;
 
 
-  // Show success message
-  successMessage.classList.remove("hidden");
-
-  successMessage.innerHTML =
-    "WhatsApp is opening. Please press Send to submit your enquiry.";
+    submitButton.innerHTML =
+      '<i class="fa-brands fa-whatsapp mr-2"></i> Opening WhatsApp...';
 
 
-  // Open WhatsApp
-  window.open(whatsappURL, "_blank");
+
+    /*
+     * Show status
+     */
+
+    statusMessage.classList.remove("hidden");
+
+    statusMessage.classList.remove(
+      "text-red-400"
+    );
+
+    statusMessage.classList.add(
+      "text-green-400"
+    );
+
+    statusMessage.textContent =
+      "Opening WhatsApp...";
 
 
-  // Reset button after 3 seconds
-  setTimeout(function() {
 
-    submitBtn.innerHTML =
-      '<i class="fa-brands fa-whatsapp mr-2"></i> Send Enquiry on WhatsApp';
+    /*
+     * DIRECT REDIRECT
+     *
+     * This avoids popup-blocking issues.
+     */
 
-    submitBtn.disabled = false;
+    window.location.href = whatsappURL;
 
-  }, 3000);
 
-}
+  });
+
+
+});
 
 </script>
-```
+
+
+
 
   <!-- ══════════════════════ FOOTER ══════════════════════ -->
   <footer style="background:#0a0a0a;border-top:3px solid var(--red)" class="py-10 px-6 md:px-12">
